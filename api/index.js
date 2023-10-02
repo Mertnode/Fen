@@ -1,6 +1,15 @@
 const express = require('express')
+const connectDB = require('./config/connectDB.JS')
+const cors = require('cors')
 const app = express()
 require('dotenv').config()
+connectDB();
+app.use(cors({
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  }));
+
 const port = process.env.PORT || 5000
 
 // !important! 
